@@ -1,0 +1,19 @@
+apiVersion: modelspec.paralleliq.ai/v0.1
+kind: ModelSpec
+
+metadata:
+  name: minimal-llm   # Human-friendly identifier for this spec
+
+spec:
+  identity:
+    model:
+      id: example-llm           # Logical model identifier (not a deployment name)
+      family: llama             # Model family for grouping and compatibility
+      task: text-generation     # Primary task the model performs
+      framework: transformers   # Runtime framework used to load the model
+
+  runtime:
+    accelerator:
+      vendor: nvidia            # GPU vendor
+      type: a10                 # GPU model
+      count: 1                  # Number of GPUs required
