@@ -1,0 +1,26 @@
+apiVersion: modelspec.paralleliq.ai/v0.1
+kind: ModelSpec
+
+metadata:
+  name: llama3-8b-batching
+  labels:
+    runtime: vllm
+
+spec:
+  identity:
+    model:
+      id: llama-3-8b-instruct
+      family: llama3
+      task: text-generation
+      framework: transformers
+      precision: bf16
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: h100
+      count: 1
+
+    batch:
+      maxBatchSize: 32                 # Upper bound for concurrent requests
+      maxSequenceLengthTokens: 8192    # Impacts KV cache and GPU memory

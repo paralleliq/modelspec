@@ -1,0 +1,23 @@
+apiVersion: modelspec.paralleliq.ai/v0.1
+kind: ModelSpec
+
+metadata:
+  name: llama3-8b-artifacts
+
+spec:
+  identity:
+    model:
+      id: llama-3-8b-instruct
+      family: llama3
+      task: text-generation
+      framework: transformers
+      precision: bf16            # Numeric precision expected at runtime
+      artifacts:
+        modelUri: hf://meta-llama/Meta-Llama-3-8B-Instruct
+        tokenizerUri: hf://meta-llama/Meta-Llama-3-8B-Instruct
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: a100-80gb
+      count: 1

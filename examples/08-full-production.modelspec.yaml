@@ -1,0 +1,98 @@
+apiVersion: modelspec.paralleliq.ai/v0.1
+kind: ModelSpec
+
+metadata:
+  name: llama-2-70b-chat-prod
+  version: "2025-01"
+  description: Production chat LLM for customer support
+  labels:
+    team: ml-platform
+    environment: prod
+    region: us-west-2
+  annotations:
+    owner: ml-platform-team
+    supportChannel: "#support-ml"
+
+spec:
+  identity:
+    model:
+      id: llama-2-70b-chat
+      family: llama-2
+      task: chat-completion
+      framework: vllm
+      precision: fp16
+      artifacts:
+        modelUri: s3://ml-models/llama-2-70b-chat/weights-v3/
+        tokenizerUri: s3://ml-models/llama-2-70b-chat/tokenizer-v3/
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: a100-80gb
+      count: 4                      # Multi-GPU model
+    batch:
+      maxBatchSize: 64
+      maxSequenceLengthTokens: 4096
+    resources:
+      cpuCores: 16
+      memoryGb: 128
+      ephemeralStorageGb: 200
+    environment:
+      variables:
+        VLLM_LOG_LEVEL: info
+        TOKENIZER_PARALLELISM: "false"
+
+  operations:
+    serving:
+      protocol: http
+      port: 8000
+      readinessProbe:
+        path: /healthz/ready
+        timeoutSeconds: 5
+      livenessProbe:
+        path: /healthz/live
+        timeoutSeconds: 5
+      maxConcurrency: 32
+      timeoutSeconds: 60
+
+    scaling:
+      minReplicas: 2
+      maxReplicas: 10
+      targetLatencyMsP95: 800
+      targetRps: 50
+
+    observability:
+      metrics:
+        enabled: true
+      logging:
+        level: info
+      tracing:
+        enabled: true
+
+  dependencies:
+    - id: input-guardrail
+      role: guardrail
+      specRef: ./guardrails/input-safety.modelspec.yaml
+      required: true
+      interface:
+        inputType: text
+        outputType: filtered_text
+        maxLatencyMs: 50
+
+    - id: output-guardrail
+      role: guardrail
+      specRef: ./guardrails/output-safety.modelspec.yaml
+      required: false
+      interface:
+        inputType: text
+        outputType: filtered_text
+        maxLatencyMs: 60
+
+  governance:
+    compliance:
+      pii:
+        allowed: false
+        policy: internal-pii-policy-v3
+      retention:
+        logsDays: 30
+        artifactsDays: 0

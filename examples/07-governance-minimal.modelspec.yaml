@@ -1,0 +1,28 @@
+apiVersion: modelspec.paralleliq.ai/v0.1
+kind: ModelSpec
+
+metadata:
+  name: llama3-8b-governance
+
+spec:
+  identity:
+    model:
+      id: llama-3-8b-instruct
+      family: llama3
+      task: text-generation
+      framework: transformers
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: a100-80gb
+      count: 1
+
+  governance:
+    compliance:
+      pii:
+        allowed: false                  # Explicit PII handling rule
+        policy: no_pii
+      retention:
+        logsDays: 14                    # Operationally auditable
+        artifactsDays: 30

@@ -1,0 +1,28 @@
+apiVersion: modelspec.paralleliq.ai/v0.1
+kind: ModelSpec
+
+metadata:
+  name: llama3-8b-observability
+
+spec:
+  identity:
+    model:
+      id: llama-3-8b-instruct
+      family: llama3
+      task: text-generation
+      framework: transformers
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: l40s
+      count: 1
+
+  operations:
+    observability:
+      metrics:
+        enabled: true             # Metrics must exist
+      tracing:
+        enabled: false            # Explicitly disabled (intent matters)
+      logging:
+        level: info               # Expected verbosity

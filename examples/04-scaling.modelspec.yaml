@@ -1,0 +1,25 @@
+apiVersion: modelspec.paralleliq.ai/v0.1
+kind: ModelSpec
+
+metadata:
+  name: llama3-8b-scaling
+
+spec:
+  identity:
+    model:
+      id: llama-3-8b-instruct
+      family: llama3
+      task: text-generation
+      framework: transformers
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: a100-80gb
+      count: 1
+
+  operations:
+    scaling:
+      minReplicas: 1                  # Availability floor
+      maxReplicas: 4                  # Cost / capacity ceiling
+      targetLatencyMsP95: 350          # Desired tail latency objective

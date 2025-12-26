@@ -1,0 +1,29 @@
+apiVersion: modelspec.paralleliq.ai/v0.1
+kind: ModelSpec
+
+metadata:
+  name: llama3-8b-serving
+  labels:
+    runtime: vllm               # Informational label, not enforcement
+
+spec:
+  identity:
+    model:
+      id: llama-3-8b-instruct
+      family: llama3
+      task: text-generation
+      framework: transformers
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: h100
+      count: 1
+
+  operations:
+    serving:
+      protocol: http            # How clients communicate with the model
+      port: 8000                # Expected service port
+      readinessProbe: /health   # Used by load balancers / schedulers
+      livenessProbe: /health
+      timeoutSeconds: 120       # Upper bound for request handling
