@@ -89,3 +89,78 @@ ModelSpec can be used independently, but becomes more powerful when paired with 
 ## Versioning
 
 This repository currently targets **ModelSpec v0.1** (v1alpha1). See the [Versioning guide](docs/versioning.md) for details on schema versions and compatibility.
+
+
+## 🙌 Acknowledgment
+
+This project exists thanks to contributions from engineers, researchers, and practitioners committed to building **safer**, **faster**, and **more reliable** AI systems.
+
+The goal is simple:
+
+> **Make AI deployment knowledge open, neutral, and accessible to everyone.**
+
+---
+## 🔗 Stay Connected
+
+Because the project is neutral & community-owned, there are **no personal branding links**, but you are encouraged to:
+
+- ⭐ Star the repo  
+- ⬆️ Create issues  
+- 🔧 Submit PRs  
+- 🧠 Share it with your team  
+
+Together, we can build better AI infrastructure standards.
+
+---
+
+<div align="center">
+
+  <!-- Company Logo -->
+  <img src="images/company-logo.png" alt="ParalleliQ Logo" width="360"/>
+
+  <br/><br/>
+
+  <!-- Social & Community Links -->
+  <a href="https://www.linkedin.com/company/paralleliq" rel="nofollow">
+    <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white">
+  </a>
+  <a href="https://www.medium.com/@samhoss93" rel="nofollow">
+    <img alt="Medium" src="https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white">
+  </a>
+  <a href="https://x.com/paralleliq" rel="nofollow">
+    <img alt="X" src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white">
+  </a>
+  <a href="https://www.crunchbase.com/organization/paralleliq" rel="nofollow">
+    <img alt="Crunchbase" src="https://img.shields.io/badge/Crunchbase-0288D1?style=for-the-badge&logo=crunchbase&logoColor=white">
+  </a>
+
+  <br/><br/>
+
+  <p align="center">
+    <strong>📨 Business Inquiries:</strong>
+    <a href="mailto:sam@paralleliq.ai">sam@paralleliq.ai</a>
+    &nbsp;•&nbsp;
+    <strong>Founder & CEO:</strong> Sam Hosseini
+  </p>
+
+  <br/>
+
+  <!-- Typing Animation -->
+  <a href="https://git.io/typing-svg" rel="nofollow">
+    <img src="https://readme-typing-svg.herokuapp.com?font=firacode&color=%23FF00ED&size=24&duration=2500&center=true&vCenter=true&lines=Glad+to+see+you+here!;Thanks+for+visiting+the+PIQC+Knowledge+Base!" alt="Typing SVG">
+  </a>
+
+</div>
+
+---
+
+*Thanks for contributing and helping shape better AI infrastructure standards.*
+
+
+---
+
+<div align="center">
+  <sub>Part of the <a href="https://github.com/paralleliq/piqc-knowledge-base">PIQC Knowledge Base</a></sub>
+  <br/>
+  <sub>Maintained by <a href="https://paralleliq.ai">ParalleliQ</a></sub>
+</div>
