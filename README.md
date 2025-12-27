@@ -1,6 +1,6 @@
 # ModelSpec
 
-**ModelSpec** is an open, declarative specification for describing AI and LLM models, their runtime requirements, and their operational expectations. It is designed to make **model intent explicit** — independently of how or where a model is deployed.
+**ModelSpec** is an open, declarative specification for describing AI and LLM models, their runtime requirements, and their operational expectations. It is designed to make **model intent explicit** independently of how or where a model is deployed.
 
 ---
 
