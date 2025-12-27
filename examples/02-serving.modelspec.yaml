@@ -1,4 +1,4 @@
-apiVersion: modelspec.paralleliq.ai/v0.1
+apiVersion: piqc.ai/v1alpha1
 kind: ModelSpec
 
 metadata:
@@ -24,6 +24,12 @@ spec:
     serving:
       protocol: http            # How clients communicate with the model
       port: 8000                # Expected service port
-      readinessProbe: /health   # Used by load balancers / schedulers
-      livenessProbe: /health
+      readinessProbe:
+        path: "/health"
+        timeoutSeconds: 5
+
+      livenessProbe:
+        path: "/health"
+        timeoutSeconds: 5
+
       timeoutSeconds: 120       # Upper bound for request handling

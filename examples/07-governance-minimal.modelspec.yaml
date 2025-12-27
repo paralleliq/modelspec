@@ -1,4 +1,4 @@
-apiVersion: modelspec.paralleliq.ai/v0.1
+apiVersion: piqc.ai/v1alpha1
 kind: ModelSpec
 
 metadata:
