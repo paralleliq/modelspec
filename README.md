@@ -73,6 +73,15 @@ This repository includes a **progressive set of examples** under the `examples/`
 New users should start with **00** and move downward, as each example builds on the previous one.
 
 ---
+## Validate a ModelSpec (MVP validator)
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r tooling/validator/requirements.txt
+
+python tooling/validator/validate.py --schema schema/modelspec.v0.1.json examples/
+```
 
 ## Relationship to PIQC
 
@@ -164,12 +173,3 @@ Together, we can build better AI infrastructure standards.
   <br/>
   <sub>Maintained by <a href="https://paralleliq.ai">ParalleliQ</a></sub>
 </div>
-## Validate a ModelSpec (MVP validator)
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r tooling/validator/requirements.txt
-
-python tooling/validator/validate.py --schema schema/modelspec.v0.1.json examples/
-```
