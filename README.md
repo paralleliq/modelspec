@@ -172,3 +172,4 @@ source .venv/bin/activate
 pip install -r tooling/validator/requirements.txt
 
 python tooling/validator/validate.py --schema schema/modelspec.v0.1.json examples/
+```
