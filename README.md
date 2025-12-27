@@ -169,7 +169,7 @@ Together, we can build better AI infrastructure standards.
 ---
 
 <div align="center">
-  <sub>Part of the <a href="https://github.com/paralleliq/piqc-knowledge-base">PIQC Knowledge Base</a></sub>
+  <sub>Part of the <a href="https://github.com/paralleliq/modelspec">PIQC ModelSpec</a></sub>
   <br/>
   <sub>Maintained by <a href="https://paralleliq.ai">ParalleliQ</a></sub>
 </div>
