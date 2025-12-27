@@ -1,4 +1,4 @@
-apiVersion: modelspec.paralleliq.ai/v0.1
+apiVersion: piqc.ai/v1alpha1
 kind: ModelSpec
 
 metadata:
@@ -69,24 +69,25 @@ spec:
       tracing:
         enabled: true
 
-  dependencies:
-    - id: input-guardrail
-      role: guardrail
-      specRef: ./guardrails/input-safety.modelspec.yaml
-      required: true
-      interface:
-        inputType: text
-        outputType: filtered_text
-        maxLatencyMs: 50
-
-    - id: output-guardrail
-      role: guardrail
-      specRef: ./guardrails/output-safety.modelspec.yaml
-      required: false
-      interface:
-        inputType: text
-        outputType: filtered_text
-        maxLatencyMs: 60
+  pipeline:
+    dependencies:
+      - id: input-guardrail
+        role: guardrail
+        specRef: ./guardrails/input-safety.modelspec.yaml
+        required: true
+        interface:
+          inputType: text
+          outputType: filtered_text
+          maxLatencyMs: 50
+  
+      - id: output-guardrail
+        role: guardrail
+        specRef: ./guardrails/output-safety.modelspec.yaml
+        required: false
+        interface:
+          inputType: text
+          outputType: filtered_text
+          maxLatencyMs: 60
 
   governance:
     compliance:

@@ -1,4 +1,4 @@
-apiVersion: modelspec.paralleliq.ai/v0.1
+apiVersion: piqc.ai/v1alpha1
 kind: ModelSpec
 
 metadata:
@@ -20,21 +20,22 @@ spec:
       type: a100-80gb
       count: 1
 
-  dependencies:
-    - id: embedder
-      role: input                       # Semantic role in the system
-      specRef: ./embedder.modelspec.yaml
-      required: true
-      interface:
-        inputType: text
-        outputType: embedding
-        maxLatencyMs: 50                # Dependency SLO
-
-    - id: reranker
-      role: rank
-      specRef: ./reranker.modelspec.yaml
-      required: false
-      interface:
-        inputType: text+documents
-        outputType: ranked_documents
-        maxLatencyMs: 80
+  pipeline: 
+    dependencies:
+      - id: embedder
+        role: input                       # Semantic role in the system
+        specRef: ./embedder.modelspec.yaml
+        required: true
+        interface:
+          inputType: text
+          outputType: embedding
+          maxLatencyMs: 50                # Dependency SLO
+  
+      - id: reranker
+        role: reranker
+        specRef: ./reranker.modelspec.yaml
+        required: false
+        interface:
+          inputType: text+documents
+          outputType: ranked_documents
+          maxLatencyMs: 80
