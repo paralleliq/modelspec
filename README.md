@@ -22,6 +22,12 @@ The full ModelSpec documentation is available on the Paralleliq website:
 - **ModelSpec and PIQC**  
   https://www.paralleliq.ai/modelspec/piqc
 
+## Repository layout
+
+- `schema/` – ModelSpec JSON schema
+- `examples/` – Validated example ModelSpecs
+- `tooling/` – Validation and supporting tools
+- `.vscode/` – Editor support (snippets, schema mapping)
 
 ---
 
