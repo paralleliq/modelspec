@@ -182,7 +182,7 @@ Together, we can build better AI infrastructure standards.
   <br/>
 
   <!-- Typing Animation -->
-  [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&color=FF00ED&size=24&duration=8000&pause=2000&loop=true&center=true&vCenter=true&lines=Glad+to+see+you+here!;Thanks+for+visiting+the+PIQC+ModelSpec!)](https://git.io/typing-svg)
+  [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&color=FF00ED&size=24&duration=3000&pause=500&loop=true&center=true&vCenter=true&lines=Glad+to+see+you+here!;Thanks+for+visiting+the+PIQC+ModelSpec!)](https://git.io/typing-svg)
 
 </div>
 
