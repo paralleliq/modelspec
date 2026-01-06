@@ -1,0 +1,29 @@
+name: 🔧 Tooling / Validator Issue
+description: Issues with validation tooling, IDE support, or CI
+title: "[Tooling]: "
+labels: ["tooling"]
+body:
+  - type: textarea
+    attributes:
+      label: What tool is affected?
+      placeholder: validator / VS Code schema / snippets / CI
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Issue description
+      description: Describe what’s not working.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      render: bash
+
+  - type: input
+    attributes:
+      label: Environment
+      placeholder: OS, VS Code version, Python version
+
