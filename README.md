@@ -7,11 +7,11 @@
 
 The full ModelSpec documentation is available on the Paralleliq website:
 
-- [**Introduction**](https://github.com/paralleliq/modelspec/intro)
-- [**User's Guide**](https://github.com/paralleliq/modelspec/users-guide)
-- [**Use Cases**](https://github.com/paralleliq/modelspec/usecases)
-- [**Reference Documentation**](https://github.com/paralleliq/modelspec/documentation)
-- [**PIQC**](https://github.com/paralleliq/modelspec/piqc)
+- [**Introduction**](https://www.paralleliq.ai/modelspec/intro)
+- [**User's Guide**](https://www.paralleliq.ai/modelspec/users-guide)
+- [**Use Cases**](https://www.paralleliq.ai/modelspec/usecases)
+- [**Reference Documentation**](https://www.paralleliq.ai/modelspec/documentation)
+- [**PIQC**](https://www.paralleliq.ai/modelspec/piqc)
 
 ## Repository layout
 
