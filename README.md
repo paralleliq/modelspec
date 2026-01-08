@@ -13,6 +13,13 @@ The full ModelSpec documentation is available on the Paralleliq website:
 - [**Reference Documentation**](https://www.paralleliq.ai/modelspec/documentation)
 - [**PIQC**](https://www.paralleliq.ai/modelspec/piqc)
 
+- <a href="https://www.paralleliq.ai/modelspec/intro" target="_blank" rel="noopener noreferrer"><strong>Introduction</strong></a>
+- <a href="https://www.paralleliq.ai/modelspec/users-guide" target="_blank" rel="noopener noreferrer"><strong>User's Guide</strong></a>
+- <a href="https://www.paralleliq.ai/modelspec/usecases" target="_blank" rel="noopener noreferrer"><strong>Use Cases</strong></a>
+- <a href="https://www.paralleliq.ai/modelspec/documentation" target="_blank" rel="noopener noreferrer"><strong>Reference Documentation</strong></a>
+- <a href="https://www.paralleliq.ai/modelspec/piqc" target="_blank" rel="noopener noreferrer"><strong>PIQC</strong></a>
+
+
 ## Repository layout
 
 - `schema/` – ModelSpec JSON schema
