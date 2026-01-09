@@ -5,6 +5,8 @@
 
 **ModelSpec** is an open, declarative specification for describing AI and LLM models, their runtime requirements, and their operational expectations. It is designed to make **model intent explicit** independently of how or where a model is deployed.
 
+A short intro video on Modelspec: https://www.youtube.com/watch?v=CToEPW0iNv0
+
 The full ModelSpec documentation is available on the Paralleliq website:
 
 - [**Introduction**](https://www.paralleliq.ai/modelspec/intro)
