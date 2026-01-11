@@ -1,0 +1,36 @@
+name: 🐞 Bug or Validation Issue
+description: Report an issue with schema validation or unexpected behavior
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: Describe the issue you encountered.
+      placeholder: Validation failed / unexpected behavior / incorrect error message
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: ModelSpec snippet (if applicable)
+      description: Paste the relevant part of your ModelSpec (redact sensitive info).
+      render: yaml
+
+  - type: input
+    attributes:
+      label: ModelSpec version
+      placeholder: v0.1
+
+  - type: input
+    attributes:
+      label: Validator version / commit
+      placeholder: commit hash or version
+

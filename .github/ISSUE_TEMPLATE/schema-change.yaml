@@ -1,0 +1,34 @@
+name: 📐 Schema Change Request
+description: Propose a change or extension to the ModelSpec schema
+title: "[Schema]: "
+labels: ["schema", "proposal"]
+body:
+  - type: textarea
+    attributes:
+      label: Problem statement
+      description: What can you not express with the current schema?
+      placeholder: Describe the limitation or gap you’re hitting.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Proposed change
+      description: What would you like to add or modify?
+      placeholder: New field / new enum / structural change
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Example usage
+      description: Show how the proposed change would be used.
+      render: yaml
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Alternatives considered
+      description: Other ways you tried to model this.
+

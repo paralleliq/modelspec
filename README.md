@@ -5,8 +5,11 @@
 
 **ModelSpec** is an open, declarative specification for describing AI and LLM models, their runtime requirements, and their operational expectations. It is designed to make **model intent explicit** independently of how or where a model is deployed.
 
+A short intro video on Modelspec: https://www.youtube.com/watch?v=CToEPW0iNv0
+
 The full ModelSpec documentation is available on the Paralleliq website:
 
+<<<<<<< HEAD
 - **Introduction**  
   <a href="https://www.paralleliq.ai/modelspec/intro" target="_blank">https://www.paralleliq.ai/modelspec/intro</a>
 
@@ -21,6 +24,14 @@ The full ModelSpec documentation is available on the Paralleliq website:
 
 - **ModelSpec and PIQC**  
   <a href="https://www.paralleliq.ai/modelspec/piqc" target="_blank">https://www.paralleliq.ai/modelspec/piqc</a>
+=======
+- [**Introduction**](https://www.paralleliq.ai/modelspec/intro)
+- [**User's Guide**](https://www.paralleliq.ai/modelspec/users-guide)
+- [**Use Cases**](https://www.paralleliq.ai/modelspec/usecases)
+- [**Reference Documentation**](https://www.paralleliq.ai/modelspec/documentation)
+- [**PIQC**](https://www.paralleliq.ai/modelspec/piqc)
+
+>>>>>>> abcc2559828083c3035d86dd6f68697625b700f3
 ## Repository layout
 
 - `schema/` – ModelSpec JSON schema

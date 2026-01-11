@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 ModelSpec Discussions
+    url: https://github.com/paralleliq/modelspec/discussions
+    about: Ask questions, propose ideas, or discuss usage here.
+
