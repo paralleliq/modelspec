@@ -25,4 +25,4 @@ jobs:
     - name: Validate Schema and Examples
       run: |
         # Run validator against all examples
-        python tooling/validator/validate.py --schema schema/modelspec.v0.1.json examples/
+        python tooling/validator/validate.py --schema schema/v0.1/modelspec.v0.1.json examples/
