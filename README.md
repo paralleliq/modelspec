@@ -1,26 +1,24 @@
+<div align="center">
+  <img src="images/company-logo.png" alt="ParalleliQ Logo" width="300"/>
 
-
-# ModelSpec
-
-
+  
+<p align="centre">
+  <img src="https://img.shields.io/badge/Category-AI%20Infrastructure-blue.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/Scope-GenAI%20%7C%20LLMs%20%7C%20Inference-lightgrey.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/License-BSL-orange.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
+</p>
+</div>
+  <h1>ModelSpec</h1>
 **ModelSpec** is an open, declarative specification for describing AI and LLM models, their runtime requirements, and their operational expectations. It is designed to make **model intent explicit** independently of how or where a model is deployed.
 
-The full ModelSpec documentation is available on the Paralleliq website:
+Full documentation is available on the [ParalleliQ Website](https://www.paralleliq.ai):
 
-- **Introduction**  
-  https://www.paralleliq.ai/modelspec/intro
-
-- **User’s Guide**  
-  https://www.paralleliq.ai/modelspec/users-guide
-
-- **Use Cases**  
-  https://www.paralleliq.ai/modelspec/usecases
-
-- **Reference Documentation**  
-  https://www.paralleliq.ai/modelspec/documentation
-
-- **ModelSpec and PIQC**  
-  https://www.paralleliq.ai/modelspec/piqc
+*   [**Introduction & Core Concepts**](https://www.paralleliq.ai/modelspec/intro)
+*   [**User’s Guide**](https://www.paralleliq.ai/modelspec/users-guide)
+*   [**Use Cases & Patterns**](https://www.paralleliq.ai/modelspec/usecases)
+*   [**Reference Documentation**](https://www.paralleliq.ai/modelspec/documentation)
+*   [**Compliance & PIQC Integration**](https://www.paralleliq.ai/modelspec/piqc)
 
 ## Repository layout
 
@@ -85,17 +83,17 @@ Not all fields are required. ModelSpec is designed to grow with maturity.
 
 This repository includes a **progressive set of examples** under the `examples/` directory:
 
-| Example | Focus                                 |
-|---------|---------------------------------------|
-| 00      | Minimal ModelSpec (identity + GPU)    |
-| 01      | Model artifacts                       |
-| 02      | Serving interface                     |
-| 03      | Batching & sequence constraints       |
-| 04      | Scaling targets                       |
-| 05      | Observability expectations            |
-| 06      | Model dependencies (RAG pattern)      |
-| 07      | Minimal governance                    |
-| 08      | Full production example (advanced)    |
+| Example | Focus                              |
+| ------- | ---------------------------------- |
+| 00      | Minimal ModelSpec (identity + GPU) |
+| 01      | Model artifacts                    |
+| 02      | Serving interface                  |
+| 03      | Batching & sequence constraints    |
+| 04      | Scaling targets                    |
+| 05      | Observability expectations         |
+| 06      | Model dependencies (RAG pattern)   |
+| 07      | Minimal governance                 |
+| 08      | Full production example (advanced) |
 
 New users should start with **00** and move downward, as each example builds on the previous one.
 
@@ -134,6 +132,17 @@ This project exists thanks to contributions from engineers, researchers, and pra
 The goal is simple:
 
 > **Make AI deployment knowledge open, neutral, and accessible to everyone.**
+
+---
+## 🤝 Contributing
+
+ModelSpec is an open standard, and we welcome contributions from the community!
+
+1.  Read our [Contributing Guide](CONTRIBUTING.md).
+2.  Check for open [Issues](https://github.com/paralleliq/modelspec/issues).
+3.  Join the discussion on [GitHub Discussions](https://github.com/paralleliq/modelspec/discussions).
+
+See [CODEOWNERS](CODEOWNERS) for reviewer contacts.
 
 ---
 ## 🔗 Stay Connected

@@ -3,7 +3,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "ModelSpec v0.2",
   "type": "object",
-  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
   "properties": {
     "apiVersion": {
       "type": "string",
@@ -15,7 +20,9 @@
     },
     "metadata": {
       "type": "object",
-      "required": ["name"],
+      "required": [
+        "name"
+      ],
       "properties": {
         "name": {
           "type": "string"
@@ -41,18 +48,27 @@
       },
       "additionalProperties": false
     },
-
     "spec": {
       "type": "object",
-      "required": ["identity", "runtime"],
+      "required": [
+        "identity",
+        "runtime"
+      ],
       "properties": {
         "identity": {
           "type": "object",
-          "required": ["model"],
+          "required": [
+            "model"
+          ],
           "properties": {
             "model": {
               "type": "object",
-              "required": ["id", "family", "task", "framework"],
+              "required": [
+                "id",
+                "family",
+                "task",
+                "framework"
+              ],
               "properties": {
                 "id": {
                   "type": "string"
@@ -87,14 +103,19 @@
           },
           "additionalProperties": false
         },
-
         "runtime": {
           "type": "object",
-          "required": ["accelerator"],
+          "required": [
+            "accelerator"
+          ],
           "properties": {
             "accelerator": {
               "type": "object",
-              "required": ["vendor", "type", "count"],
+              "required": [
+                "vendor",
+                "type",
+                "count"
+              ],
               "properties": {
                 "vendor": {
                   "type": "string"
@@ -156,7 +177,6 @@
           },
           "additionalProperties": false
         },
-
         "operations": {
           "type": "object",
           "properties": {
@@ -165,7 +185,10 @@
               "properties": {
                 "protocol": {
                   "type": "string",
-                  "enum": ["http", "grpc"]
+                  "enum": [
+                    "http",
+                    "grpc"
+                  ]
                 },
                 "port": {
                   "type": "integer",
@@ -209,7 +232,6 @@
               },
               "additionalProperties": false
             },
-
             "scaling": {
               "type": "object",
               "properties": {
@@ -223,7 +245,11 @@
                 },
                 "strategy": {
                   "type": "string",
-                  "enum": ["reactive", "predictive", "manual"]
+                  "enum": [
+                    "reactive",
+                    "predictive",
+                    "manual"
+                  ]
                 },
                 "targetLatencyMsP95": {
                   "type": "number",
@@ -249,7 +275,6 @@
               },
               "additionalProperties": false
             },
-
             "observability": {
               "type": "object",
               "properties": {
@@ -294,7 +319,6 @@
           },
           "additionalProperties": false
         },
-
         "pipeline": {
           "type": "object",
           "properties": {
@@ -305,7 +329,10 @@
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "required": ["name", "type"],
+                    "required": [
+                      "name",
+                      "type"
+                    ],
                     "properties": {
                       "name": {
                         "type": "string"
@@ -330,7 +357,10 @@
                   "type": "array",
                   "items": {
                     "type": "object",
-                    "required": ["name", "type"],
+                    "required": [
+                      "name",
+                      "type"
+                    ],
                     "properties": {
                       "name": {
                         "type": "string"
@@ -352,14 +382,23 @@
               "type": "array",
               "items": {
                 "type": "object",
-                "required": ["id", "role"],
+                "required": [
+                  "id",
+                  "role"
+                ],
                 "properties": {
                   "id": {
                     "type": "string"
                   },
                   "role": {
                     "type": "string",
-                    "enum": ["input", "guardrail", "reranker", "postprocess", "custom"]
+                    "enum": [
+                      "input",
+                      "guardrail",
+                      "reranker",
+                      "postprocess",
+                      "custom"
+                    ]
                   },
                   "specRef": {
                     "type": "string"
@@ -391,7 +430,6 @@
           },
           "additionalProperties": false
         },
-
         "governance": {
           "type": "object",
           "properties": {
@@ -471,7 +509,5 @@
       "additionalProperties": false
     }
   },
-
   "additionalProperties": false
 }
-

@@ -1,21 +1,12 @@
-License text copyright (c) 2020 MariaDB Corporation Ab, All Rights Reserved.  
-"Business Source License" is a trademark of MariaDB Corporation Ab.
+Business Source License 1.1
 
-Licensor:  
-ParallelIQ, Inc.
+Licensor: ParallelIQ LLC
+Licensed Work: ModelSpec
+Change Date: January 1, 2028
+Change License: Apache 2.0
+Additional Use Grant: None
 
-Licensed Work:  
-The Licensed Work is (c) 2025 ParallelIQ, Inc.
-
-Additional Use Grant:  
-You may make production use of the Licensed Work, provided your use does not include offering the Licensed Work (including any modified version) to third parties on a hosted or embedded basis in order to compete with ParallelIQ’s offerings. For purposes of this license:
-
-A “competitive offering” is a product or service offered to third parties for a fee (including via paid support or subscription) that significantly overlaps with or substitutes for the core functionality of the Licensed Work or any product or service of the Licensor related to the Licensed Work. If your product or service is not a competitive offering when you first make it available, it will not be considered a competitive offering if the Licensor later releases an updated product with additional capabilities. Additionally, products or services that are not provided on a paid basis (open-source or free offerings) are not competitive offerings.
-
-“Embedded” means incorporating any part of the Licensed Work into a competitive offering, or packaging a competitive offering such that the Licensed Work or its components are required for the offering to operate.
-
-Using the Licensed Work internally or for non-commercial purposes within your own organization is not considered a competitive offering. The Licensor considers all affiliates under common control as part of your organization for purposes of this definition.
-
+Terms:
 
 The Licensor hereby grants you the right to copy, modify, create derivative works, redistribute, and make non-production use of the Licensed Work. The Licensor may make an Additional Use Grant, above, permitting limited production use.
 
