@@ -122,7 +122,7 @@ ModelSpec can be used independently, but becomes more powerful when paired with 
 
 ## Versioning
 
-This repository currently targets **ModelSpec v0.1** (v1alpha1). See the [Versioning guide](docs/versioning.md) for details on schema versions and compatibility.
+This repository currently targets **ModelSpec v0.1** (v1alpha1). See the [Versioning guide](docs/v0.1/versioning.md) for details on schema versions and compatibility.
 
 
 ## 🙌 Acknowledgment
