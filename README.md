@@ -49,17 +49,18 @@ ModelSpec exists to capture these assumptions in a **machine-readable, human-aud
 
 **ModelSpec is:**
 
-- declarative (describes intent, not actions)  
-- runtime- and platform-agnostic  
-- focused on individual models and their expectations  
-- suitable for documentation, validation, and analysis  
+- a **declarative specification for AI model execution and deployment intent**  
+- **runtime- and platform-agnostic**  
+- focused on **individual models and their operational expectations**  
+- suitable for **documentation, validation, and analysis of how models are expected to run**  
 
 **ModelSpec is not:**
 
-- a deployment tool  
-- an orchestration engine  
-- a scheduler  
-- a policy enforcement system  
+- a **model architecture or training specification**  
+- a deployment tool 
+- an orchestration engine
+- a scheduler
+- a policy enforcement system
 
 Those concerns are intentionally out of scope.
 
