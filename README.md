@@ -1,107 +1,138 @@
 <div align="center">
-  <img src="images/company-logo.png" alt="ParalleliQ Logo" width="300"/>
-
-  
-<p align="centre">
-  <img src="https://img.shields.io/badge/Category-AI%20Infrastructure-blue.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/Scope-GenAI%20%7C%20LLMs%20%7C%20Inference-lightgrey.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/License-BSL-orange.svg?style=flat-square">
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg">
-</p>
+  <img src="images/company-logo.png" alt="Paralleliq Logo" width="300"/>
 </div>
-  <h1>ModelSpec</h1>
-  
-**ModelSpec** is an open, declarative specification for describing AI and LLM models, their runtime requirements, and their operational expectations. It is designed to make **model intent explicit** independently of how or where a model is deployed.
 
+<h1 align="center">ModelSpec</h1>
 
-Full documentation is available on the [ParalleliQ Website](https://www.paralleliq.ai):
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-v0.1-blue.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/Category-AI%20Infrastructure-lightgrey.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/License-Apache%202.0-orange.svg?style=flat-square">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square">
+</p>
 
-*   [**Introduction & Core Concepts**](https://www.paralleliq.ai/modelspec/intro)
-*   [**User’s Guide**](https://www.paralleliq.ai/modelspec/users-guide)
-*   [**Use Cases & Patterns**](https://www.paralleliq.ai/modelspec/usecases)
-*   [**Reference Documentation**](https://www.paralleliq.ai/modelspec/documentation)
-*   [**Compliance & PIQC Integration**](https://www.paralleliq.ai/modelspec/piqc)
-
-## Repository layout
-
-- `schema/` – ModelSpec JSON schema
-- `examples/` – Validated example ModelSpecs
-- `tooling/` – Validation and supporting tools
-- `.vscode/` – Editor support (snippets, schema mapping)
+<p align="center">
+  <strong>A declarative standard for describing what an AI model needs to run — and how it should behave in production.</strong>
+</p>
 
 ---
 
-## Why ModelSpec
+## The problem
 
-Modern AI systems fail less often because of model quality and more often because of **implicit assumptions**:
+When a model moves from development to production, critical knowledge gets lost:
 
-- hardware constraints are undocumented  
-- batching and sequence limits are guessed  
-- scaling targets are unclear  
-- observability expectations are inconsistent  
-- governance policies are abstract, not operational  
+- What GPU does it actually need?
+- What's the max batch size before latency degrades?
+- How many replicas does it need at peak?
+- What compliance rules apply to its inputs and outputs?
 
-ModelSpec exists to capture these assumptions in a **machine-readable, human-auditable format**.
+This knowledge lives in someone's head, a Slack thread, or a runbook nobody reads. When something breaks at 2am, nobody knows what "correct" looks like.
 
----
-
-## What ModelSpec Is (and Is Not)
-
-**ModelSpec is:**
-
-- a **declarative specification for AI model execution and deployment intent**  
-- **runtime- and platform-agnostic**  
-- focused on **individual models and their operational expectations**  
-- suitable for **documentation, validation, and analysis of how models are expected to run**  
-
-**ModelSpec is not:**
-
-- a **model architecture or training specification**  
-- a deployment tool 
-- an orchestration engine
-- a scheduler
-- a policy enforcement system
-
-Those concerns are intentionally out of scope.
+**ModelSpec makes this knowledge explicit, machine-readable, and version-controlled.**
 
 ---
 
-## Core Concepts
+## What it looks like
 
-A ModelSpec describes:
+A minimal ModelSpec — model identity and GPU requirement:
 
-- **Model identity** – model family, task, framework, precision  
-- **Artifacts** – weights, tokenizer, versioned sources  
-- **Runtime requirements** – accelerator type, batch and sequence constraints  
-- **Operational contracts** – serving interface, scaling targets  
-- **Observability expectations** – metrics, logs, traces (what must exist)  
-- **Dependencies** – relationships to other models (e.g. RAG components)  
-- **Governance constraints** – data handling, retention, compliance rules  
+```yaml
+apiVersion: piqc.ai/v1alpha1
+kind: ModelSpec
 
-Not all fields are required. ModelSpec is designed to grow with maturity.
+metadata:
+  name: minimal-llm
+
+spec:
+  identity:
+    model:
+      id: example-llm
+      family: llama
+      task: text-generation
+      framework: transformers
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: a10
+      count: 1
+```
+
+A production ModelSpec — full operational contract:
+
+```yaml
+apiVersion: piqc.ai/v1alpha1
+kind: ModelSpec
+
+metadata:
+  name: llama-2-70b-chat-prod
+  version: "2025-01"
+  description: Production chat LLM for customer support
+  labels:
+    team: ml-platform
+    environment: prod
+
+spec:
+  identity:
+    model:
+      id: llama-2-70b-chat
+      family: llama-2
+      task: chat-completion
+      framework: vllm
+      precision: fp16
+
+  runtime:
+    accelerator:
+      vendor: nvidia
+      type: a100-80gb
+      count: 4
+    batch:
+      maxBatchSize: 64
+      maxSequenceLengthTokens: 4096
+
+  operations:
+    serving:
+      protocol: http
+      port: 8000
+      maxConcurrency: 32
+      timeoutSeconds: 60
+
+    scaling:
+      minReplicas: 2
+      maxReplicas: 10
+      targetLatencyMsP95: 800
+      targetRps: 50
+
+  governance:
+    compliance:
+      pii:
+        allowed: false
+        policy: internal-pii-policy-v3
+      retention:
+        logsDays: 30
+```
 
 ---
 
-## Learning Path
+## What ModelSpec captures
 
-This repository includes a **progressive set of examples** under the `examples/` directory:
+| Section | What it declares |
+|---|---|
+| `identity` | Model family, task, framework, precision, artifact locations |
+| `runtime` | GPU type, count, batch limits, sequence length, memory |
+| `operations.serving` | Protocol, port, concurrency, health probes, timeouts |
+| `operations.scaling` | Min/max replicas, latency targets, RPS targets |
+| `operations.observability` | Metrics, logging, tracing expectations |
+| `pipeline` | Dependencies — guardrails, embeddings, RAG components |
+| `governance` | PII policy, data retention, compliance rules |
 
-| Example | Focus                              |
-| ------- | ---------------------------------- |
-| 00      | Minimal ModelSpec (identity + GPU) |
-| 01      | Model artifacts                    |
-| 02      | Serving interface                  |
-| 03      | Batching & sequence constraints    |
-| 04      | Scaling targets                    |
-| 05      | Observability expectations         |
-| 06      | Model dependencies (RAG pattern)   |
-| 07      | Minimal governance                 |
-| 08      | Full production example (advanced) |
-
-New users should start with **00** and move downward, as each example builds on the previous one.
+Not all fields are required. ModelSpec is designed to grow with your deployment's maturity.
 
 ---
-## Validate a ModelSpec (MVP validator)
+
+## Quick start
+
+### Validate a ModelSpec
 
 ```bash
 python3 -m venv .venv
@@ -111,102 +142,73 @@ pip install -r tooling/validator/requirements.txt
 python tooling/validator/validate.py --schema schema/modelspec.v0.1.json examples/
 ```
 
-## Relationship to PIQC
+### Explore the examples
 
-ModelSpec is part of a broader ecosystem within ParallelIQ:
+The `examples/` directory has a progressive set of specs from minimal to full production:
 
-- **Knowledge Base** — what *should* be true (best practices, policies)  
-- **ModelSpec** — what was *intended* (declared model contract)  
-- **PIQC Scan** — what is *actually running* (runtime inspection)  
+| Example | What it adds |
+|---|---|
+| `00-minimal` | Model identity + GPU requirement |
+| `01-artifacts` | Weight and tokenizer locations |
+| `02-serving` | HTTP interface, health probes |
+| `03-batching` | Batch size and sequence constraints |
+| `04-scaling` | Replica targets, latency SLOs |
+| `05-observability` | Metrics, logs, tracing |
+| `06-dependencies-rag` | RAG pipeline with model dependencies |
+| `07-governance-minimal` | PII policy, data retention |
+| `08-full-production` | Complete production contract |
 
-ModelSpec can be used independently, but becomes more powerful when paired with runtime inspection and analysis tools like PIQC Scan.
+Start with `00` and work down — each example builds on the previous one.
+
+---
+
+## Where ModelSpec fits
+
+ModelSpec is one layer in a three-part system:
+
+```
+Knowledge Base   — what should be true (best practices, GPU compatibility)
+ModelSpec        — what was intended (declared model contract)          ← this repo
+piqc scan        — what is actually running (runtime inspection)
+```
+
+Used alone, ModelSpec is a documentation and validation standard. Paired with [piqc](https://github.com/paralleliq/piqc), it becomes the basis for detecting drift between what a model was declared to need and what it's actually running on.
+
+---
+
+## Repository layout
+
+```
+schema/       — ModelSpec JSON schema (v0.1)
+examples/     — Validated example ModelSpecs (00 through 08)
+tooling/      — Validator and supporting tools
+docs/         — Versioning guide and reference documentation
+```
+
+---
+
+## Contributing
+
+ModelSpec is an open standard. Contributions are welcome — new fields, new examples, validator improvements, or corrections.
+
+1. Read the [Contributing Guide](CONTRIBUTING.md)
+2. Check open [Issues](https://github.com/paralleliq/modelspec/issues)
+3. Join the discussion on [GitHub Discussions](https://github.com/paralleliq/modelspec/discussions)
 
 ---
 
 ## Versioning
 
-This repository currently targets **ModelSpec v0.1** (v1alpha1). See the [Versioning guide](docs/v0.1/versioning.md) for details on schema versions and compatibility.
-
-
-## 🙌 Acknowledgment
-
-This project exists thanks to contributions from engineers, researchers, and practitioners committed to building **safer**, **faster**, and **more reliable** AI systems.
-
-The goal is simple:
-
-> **Make AI deployment knowledge open, neutral, and accessible to everyone.**
+This repository targets **ModelSpec v0.1** (v1alpha1). See the [versioning guide](docs/v0.1/versioning.md) for schema version and compatibility details.
 
 ---
-## 🤝 Contributing
 
-ModelSpec is an open standard, and we welcome contributions from the community!
+## License
 
-1.  Read our [Contributing Guide](CONTRIBUTING.md).
-2.  Check for open [Issues](https://github.com/paralleliq/modelspec/issues).
-3.  Join the discussion on [GitHub Discussions](https://github.com/paralleliq/modelspec/discussions).
-
-See [CODEOWNERS](CODEOWNERS) for reviewer contacts.
-
----
-## 🔗 Stay Connected
-
-Because the project is neutral & community-owned, there are **no personal branding links**, but you are encouraged to:
-
-- ⭐ Star the repo  
-- ⬆️ Create issues  
-- 🔧 Submit PRs  
-- 🧠 Share it with your team  
-
-Together, we can build better AI infrastructure standards.
+Apache License 2.0 — see [LICENSE](LICENSE) for details.
 
 ---
 
 <div align="center">
-
-  <!-- Company Logo -->
-  <img src="images/company-logo.png" alt="ParalleliQ Logo" width="360"/>
-
-  <br/><br/>
-
-  <!-- Social & Community Links -->
-  <a href="https://www.linkedin.com/company/paralleliq" rel="nofollow">
-    <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white">
-  </a>
-  <a href="https://www.medium.com/@samhoss93" rel="nofollow">
-    <img alt="Medium" src="https://img.shields.io/badge/Medium-000000?style=for-the-badge&logo=medium&logoColor=white">
-  </a>
-  <a href="https://x.com/paralleliq" rel="nofollow">
-    <img alt="X" src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white">
-  </a>
-  <a href="https://www.crunchbase.com/organization/paralleliq" rel="nofollow">
-    <img alt="Crunchbase" src="https://img.shields.io/badge/Crunchbase-0288D1?style=for-the-badge&logo=crunchbase&logoColor=white">
-  </a>
-
-  <br/><br/>
-
-  <p align="center">
-    <strong>📨 Business Inquiries:</strong>
-    <a href="mailto:sam@paralleliq.ai">sam@paralleliq.ai</a>
-    &nbsp;•&nbsp;
-    <strong>Founder & CEO:</strong> Sam Hosseini
-  </p>
-
-  <br/>
-
-  <!-- Typing Animation -->
- [![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&color=FF00ED&size=24&duration=2500&pause=200&loop=false&center=true&vCenter=true&lines=Glad+to+see+you+here!;Thanks+for+visiting+the+PIQC+ModelSpec!)](https://git.io/typing-svg)
-
-</div>
-
----
-
-*Thanks for contributing and helping shape better AI infrastructure standards.*
-
-
----
-
-<div align="center">
-  <sub>Part of the <a href="https://github.com/paralleliq/modelspec">PIQC ModelSpec</a></sub>
-  <br/>
-  <sub>Maintained by <a href="https://paralleliq.ai">ParalleliQ</a></sub>
+  <sub>Built by <a href="https://paralleliq.ai">Paralleliq</a> · <a href="mailto:info@paralleliq.ai">info@paralleliq.ai</a></sub>
 </div>
