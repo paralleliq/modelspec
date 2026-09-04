@@ -164,15 +164,9 @@ Start with `00` and work down — each example builds on the previous one.
 
 ## Where ModelSpec fits
 
-ModelSpec is one layer in a three-part system:
+Used alone, ModelSpec is a documentation and validation standard — a single, versioned source of truth for what a model needs, instead of tribal knowledge in someone's head or a runbook nobody reads.
 
-```
-Knowledge Base   — what should be true (best practices, GPU compatibility)
-ModelSpec        — what was intended (declared model contract)          ← this repo
-piqc scan        — what is actually running (runtime inspection)
-```
-
-Used alone, ModelSpec is a documentation and validation standard. Paired with [piqc](https://github.com/paralleliq/piqc), it becomes the basis for detecting drift between what a model was declared to need and what it's actually running on.
+It also pairs naturally with tools that inspect what's actually deployed, like [piqc](https://github.com/paralleliq/piqc) — giving teams a common, machine-readable format for comparing what a model was built to need against what it's running on today.
 
 ---
 
