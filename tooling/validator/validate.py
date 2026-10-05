@@ -2,11 +2,11 @@
 #
 # Copyright (c) 2025 ParallelIQ LLC.
 #
-# This file is licensed under the Business Source License 1.1 (BSL 1.1).
+# Licensed under the Apache License, Version 2.0 (the "License");
 # You may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#     https://github.com/paralleliq/modelspec/blob/main/LICENSE
+#     http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
